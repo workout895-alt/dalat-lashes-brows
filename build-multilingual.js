@@ -18,7 +18,7 @@ if (!match) {
 const cleanObj = match[1].replace(/;\s*$/, '');
 const translations = eval('(' + cleanObj + ')');
 
-const baseUrl = 'https://browsaigon.com'; // User can point custom domain here, or host on netlify/vercel
+const baseUrl = 'https://workout895-alt.github.io/dalat-lashes-brows'; // GitHub Pages SEO URL
 
 const hreflangBlock = `
   <!-- Multilingual SEO & Canonical hreflang tags -->

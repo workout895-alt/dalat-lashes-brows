@@ -646,7 +646,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Update URL path without full reload for nice SEO UX
       if (window.history && window.location.protocol !== 'file:') {
-        const targetPath = selected === 'en' ? '/' : '/' + selected + '/';
+        let basePath = window.location.pathname.replace(/\/ru\/?$/, '').replace(/\/vi\/?$/, '').replace(/\/$/, '');
+        const targetPath = selected === 'en' ? (basePath ? basePath + '/' : '/') : ((basePath ? basePath : '') + '/' + selected + '/');
         if (window.location.pathname !== targetPath) {
           window.history.pushState({ lang: selected }, '', targetPath);
         }
