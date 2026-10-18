@@ -18,9 +18,14 @@ if (!match) {
 const cleanObj = match[1].replace(/;\s*$/, '');
 const translations = eval('(' + cleanObj + ')');
 
-const baseUrl = 'https://workout895-alt.github.io/dalat-lashes-brows'; // GitHub Pages SEO URL
+const baseUrl = 'https://dalat-lashes-brows.vercel.app'; // Production Vercel Domain
+
+const googleVerificationTag = '<meta name="google-site-verification" content="crZmgnCCFhPoiq9LmZaMqF2n1Kno78Xj7DjoZikv7OY" />';
 
 const hreflangBlock = `
+  <!-- Google Site Verification for Search Console -->
+  ${googleVerificationTag}
+
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/">
   <link rel="alternate" hreflang="en" href="${baseUrl}/">
@@ -66,6 +71,9 @@ ruHtml = ruHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta
 
 // Replace hreflang and canonical for Russian
 const ruHreflangBlock = `
+  <!-- Google Site Verification for Search Console -->
+  ${googleVerificationTag}
+
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/ru/">
   <link rel="alternate" hreflang="en" href="${baseUrl}/">
@@ -74,6 +82,7 @@ const ruHreflangBlock = `
   <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
 `;
 if (ruHtml.includes('rel="alternate" hreflang="ru"')) {
+  ruHtml = ruHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
   ruHtml = ruHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
 } else {
   ruHtml = ruHtml.replace('</head>', `${ruHreflangBlock}\n</head>`);
@@ -117,6 +126,9 @@ viHtml = viHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta
 
 // Replace hreflang and canonical for Vietnamese
 const viHreflangBlock = `
+  <!-- Google Site Verification for Search Console -->
+  ${googleVerificationTag}
+
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/vi/">
   <link rel="alternate" hreflang="en" href="${baseUrl}/">
@@ -125,6 +137,7 @@ const viHreflangBlock = `
   <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
 `;
 if (viHtml.includes('rel="alternate" hreflang="ru"')) {
+  viHtml = viHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
   viHtml = viHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
 } else {
   viHtml = viHtml.replace('</head>', `${viHreflangBlock}\n</head>`);

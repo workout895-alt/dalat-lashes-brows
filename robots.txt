@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://workout895-alt.github.io/dalat-lashes-brows/sitemap.xml
+Sitemap: https://dalat-lashes-brows.vercel.app/sitemap.xml
