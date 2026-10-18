@@ -98,6 +98,8 @@ ruHtml = ruHtml.replace(/src="script\.js"/g, 'src="../script.js"');
 ruHtml = ruHtml.replace(/src="hero_master\.jpg"/g, 'src="../hero_master.jpg"');
 ruHtml = ruHtml.replace(/content="hero_master\.jpg"/g, 'content="../hero_master.jpg"');
 ruHtml = ruHtml.replace(/src="photos\//g, 'src="../photos/');
+ruHtml = ruHtml.replace(/href="favicon/g, 'href="../favicon');
+ruHtml = ruHtml.replace(/href="apple-touch-icon/g, 'href="../apple-touch-icon');
 ruHtml = ruHtml.replace(/href="#/g, 'href="#'); // smooth anchor links still work on same page
 
 // Pre-render Russian text content
@@ -155,6 +157,8 @@ viHtml = viHtml.replace(/src="script\.js"/g, 'src="../script.js"');
 viHtml = viHtml.replace(/src="hero_master\.jpg"/g, 'src="../hero_master.jpg"');
 viHtml = viHtml.replace(/content="hero_master\.jpg"/g, 'content="../hero_master.jpg"');
 viHtml = viHtml.replace(/src="photos\//g, 'src="../photos/');
+viHtml = viHtml.replace(/href="favicon/g, 'href="../favicon');
+viHtml = viHtml.replace(/href="apple-touch-icon/g, 'href="../apple-touch-icon');
 
 // Pre-render Vietnamese text content
 viHtml = replaceI18nContent(viHtml, translations.vi);
