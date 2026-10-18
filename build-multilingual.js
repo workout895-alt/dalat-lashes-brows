@@ -21,10 +21,12 @@ const translations = eval('(' + cleanObj + ')');
 const baseUrl = 'https://dalat-lashes-brows.vercel.app'; // Production Vercel Domain
 
 const googleVerificationTag = '<meta name="google-site-verification" content="crZmgnCCFhPoiq9LmZaMqF2n1Kno78Xj7DjoZikv7OY" />';
+const yandexVerificationTag = '<meta name="yandex-verification" content="f04a4624acf93eec" />';
 
 const hreflangBlock = `
-  <!-- Google Site Verification for Search Console -->
+  <!-- Search Engine Verifications -->
   ${googleVerificationTag}
+  ${yandexVerificationTag}
 
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/">
@@ -71,8 +73,9 @@ ruHtml = ruHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta
 
 // Replace hreflang and canonical for Russian
 const ruHreflangBlock = `
-  <!-- Google Site Verification for Search Console -->
+  <!-- Search Engine Verifications -->
   ${googleVerificationTag}
+  ${yandexVerificationTag}
 
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/ru/">
@@ -82,6 +85,7 @@ const ruHreflangBlock = `
   <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
 `;
 if (ruHtml.includes('rel="alternate" hreflang="ru"')) {
+  ruHtml = ruHtml.replace(/<!-- Search Engine Verifications -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
   ruHtml = ruHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
   ruHtml = ruHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
 } else {
@@ -126,8 +130,9 @@ viHtml = viHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta
 
 // Replace hreflang and canonical for Vietnamese
 const viHreflangBlock = `
-  <!-- Google Site Verification for Search Console -->
+  <!-- Search Engine Verifications -->
   ${googleVerificationTag}
+  ${yandexVerificationTag}
 
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="${baseUrl}/vi/">
@@ -137,6 +142,7 @@ const viHreflangBlock = `
   <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
 `;
 if (viHtml.includes('rel="alternate" hreflang="ru"')) {
+  viHtml = viHtml.replace(/<!-- Search Engine Verifications -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
   viHtml = viHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
   viHtml = viHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
 } else {
