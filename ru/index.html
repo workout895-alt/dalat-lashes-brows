@@ -13,20 +13,94 @@
   <meta property="og:type" content="business.business">
   <meta id="og-title" property="og:title" content="Студия ресниц и бровей в Далате | @browsaigon">
   <meta id="og-desc" property="og:description" content="Профессиональный мастер по ресницам и бровям Юля в Далате (73 Đông Tĩnh). Премиум-материалы, стерильность, индивидуальный подход.">
-  <meta property="og:url" content="https://dalat-lashes-brows.vercel.app">
-  <meta property="og:image" content="../hero_master.jpg">
+  <meta property="og:url" content="https://dalat-lashes-brows.vercel.app/ru/">
+  <meta property="og:image" content="https://dalat-lashes-brows.vercel.app/hero_master.jpg">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Brow & Lash Studio Da Lat">
 
-  
   <!-- Search Engine Verifications -->
   <meta name="google-site-verification" content="crZmgnCCFhPoiq9LmZaMqF2n1Kno78Xj7DjoZikv7OY" />
   <meta name="yandex-verification" content="f04a4624acf93eec" />
 
-  
-  <!-- Search Engine Verifications -->
-  <meta name="google-site-verification" content="crZmgnCCFhPoiq9LmZaMqF2n1Kno78Xj7DjoZikv7OY" />
-  <meta name="yandex-verification" content="f04a4624acf93eec" />
+  <!-- Favicon (Google Search Snippet & Browser Standard) -->
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            rosebrand: {
+              50: '#FFF5F7',
+              100: '#FFE4E9',
+              200: '#FECDD6',
+              300: '#FDA4AF',
+              400: '#FB7185',
+              500: '#F43F5E',
+              600: '#E11D48',
+              700: '#BE123C',
+              800: '#9F1239',
+              900: '#881337',
+            },
+            softpink: '#FFF0F5',
+            blush: '#FDF2F4',
+            gold: '#D4AF37',
+            deepdark: '#2A1B24',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Schema.org JSON-LD LocalBusiness / BeautySalon with Exact Address -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Brow & Lash Studio Da Lat - @browsaigon",
+    "image": "https://dalat-lashes-brows.vercel.app/hero_master.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "73 Đông Tĩnh, Phường 8 (Lâm Viên)",
+      "addressLocality": "Thành phố Đà Lạt",
+      "addressRegion": "Lâm Đồng",
+      "addressCountry": "VN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "11.9654",
+      "longitude": "108.4502"
+    },
+    "url": "https://dalat-lashes-brows.vercel.app/ru/",
+    "priceRange": "₫₫",
+    "knowsLanguage": ["English", "Russian", "Vietnamese"],
+    "sameAs": [
+      "https://www.instagram.com/browsaigon?exln=ZzJrdm",
+      "https://t.me/Yuliya_zateyka"
+    ]
+  }
+  </script>
 
   <!-- Multilingual SEO & Canonical hreflang tags -->
   <link rel="canonical" href="https://dalat-lashes-brows.vercel.app/ru/">
@@ -34,8 +108,6 @@
   <link rel="alternate" hreflang="ru" href="https://dalat-lashes-brows.vercel.app/ru/">
   <link rel="alternate" hreflang="vi" href="https://dalat-lashes-brows.vercel.app/vi/">
   <link rel="alternate" hreflang="x-default" href="https://dalat-lashes-brows.vercel.app/">
-
-
 
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
@@ -81,8 +153,8 @@
         <div class="hidden sm:flex items-center gap-4">
           <!-- Language Selector Pill -->
           <div class="flex items-center bg-pink-100/80 p-1 rounded-full text-xs font-semibold shadow-inner border border-pink-200/70" id="lang-switcher">
-            <button type="button" data-lang="en" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 active-lang">EN</button>
-            <button type="button" data-lang="ru" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 text-pink-800 hover:text-pink-950">RU</button>
+            <button type="button" data-lang="en" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 text-pink-800 hover:text-pink-950">EN</button>
+            <button type="button" data-lang="ru" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 active-lang">RU</button>
             <button type="button" data-lang="vi" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 text-pink-800 hover:text-pink-950">VI</button>
           </div>
 
@@ -96,8 +168,8 @@
         <!-- Mobile Menu & Lang button -->
         <div class="flex items-center gap-2 md:hidden">
           <div class="flex items-center bg-pink-100/90 p-0.5 rounded-full text-xs font-semibold border border-pink-200">
-            <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded-full active-lang text-[11px]">EN</button>
-            <button type="button" data-lang="ru" class="lang-btn px-2 py-1 rounded-full text-[11px] text-pink-900">RU</button>
+            <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded-full  text-[11px] text-pink-900">EN</button>
+            <button type="button" data-lang="ru" class="lang-btn px-2 py-1 rounded-full text-[11px] active-lang">RU</button>
             <button type="button" data-lang="vi" class="lang-btn px-2 py-1 rounded-full text-[11px] text-pink-900">VI</button>
           </div>
 

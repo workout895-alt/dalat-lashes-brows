@@ -5,7 +5,7 @@ const rootDir = __dirname;
 const indexHtmlPath = path.join(rootDir, 'index.html');
 const scriptJsPath = path.join(rootDir, 'script.js');
 
-const rawHtml = fs.readFileSync(indexHtmlPath, 'utf8');
+const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
 const scriptCode = fs.readFileSync(scriptJsPath, 'utf8');
 
 // Extract translations from script.js
@@ -18,161 +18,123 @@ if (!match) {
 const cleanObj = match[1].replace(/;\s*$/, '');
 const translations = eval('(' + cleanObj + ')');
 
-const baseUrl = 'https://dalat-lashes-brows.vercel.app'; // Production Vercel Domain
-
-const googleVerificationTag = '<meta name="google-site-verification" content="crZmgnCCFhPoiq9LmZaMqF2n1Kno78Xj7DjoZikv7OY" />';
-const yandexVerificationTag = '<meta name="yandex-verification" content="f04a4624acf93eec" />';
-
-const hreflangBlock = `
-  <!-- Search Engine Verifications -->
-  ${googleVerificationTag}
-  ${yandexVerificationTag}
-
-  <!-- Multilingual SEO & Canonical hreflang tags -->
-  <link rel="canonical" href="${baseUrl}/">
-  <link rel="alternate" hreflang="en" href="${baseUrl}/">
-  <link rel="alternate" hreflang="ru" href="${baseUrl}/ru/">
-  <link rel="alternate" hreflang="vi" href="${baseUrl}/vi/">
-  <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
-`;
+const baseUrl = 'https://dalat-lashes-brows.vercel.app';
 
 // Helper to replace text inside elements with data-i18n attribute
 function replaceI18nContent(html, langData) {
-  // Regex matches <tag ... data-i18n="key" ...>Original Text</tag>
   return html.replace(/(<([a-zA-Z0-9\-]+)[^>]*?data-i18n="([^"]+)"[^>]*?>)([\s\S]*?)(<\/\2>)/gi, (match, openTag, tagName, key, innerContent, closeTag) => {
-    if (langData[key]) {
+    if (langData && langData[key] !== undefined) {
       return `${openTag}${langData[key]}${closeTag}`;
     }
     return match;
   });
 }
 
-// 1. Update root index.html with hreflang tags if not already present
-let enHtml = rawHtml;
-if (!enHtml.includes('rel="alternate" hreflang="ru"')) {
-  enHtml = enHtml.replace('</head>', `${hreflangBlock}\n</head>`);
-  fs.writeFileSync(indexHtmlPath, enHtml, 'utf8');
-  console.log('Updated root index.html with hreflang tags');
+function generateLanguagePage(lang, locale) {
+  let html = baseHtml;
+
+  // 1. Update <html lang="...">
+  html = html.replace(/<html lang="[^"]*"/i, `<html lang="${lang}"`);
+
+  // 2. Update meta tags
+  if (translations[lang]) {
+    const t = translations[lang];
+    if (t.metaTitle) {
+      html = html.replace(/<title id="meta-title">[\s\S]*?<\/title>/i, `<title id="meta-title">${t.metaTitle}</title>`);
+    }
+    if (t.metaDesc) {
+      html = html.replace(/<meta id="meta-desc" name="description" content="[^"]*"/i, `<meta id="meta-desc" name="description" content="${t.metaDesc}"`);
+    }
+    if (t.metaKeywords) {
+      html = html.replace(/<meta id="meta-keywords" name="keywords" content="[^"]*"/i, `<meta id="meta-keywords" name="keywords" content="${t.metaKeywords}"`);
+    }
+    if (t.ogTitle) {
+      html = html.replace(/<meta id="og-title" property="og:title" content="[^"]*"/i, `<meta id="og-title" property="og:title" content="${t.ogTitle}"`);
+    }
+    if (t.ogDesc) {
+      html = html.replace(/<meta id="og-desc" property="og:description" content="[^"]*"/i, `<meta id="og-desc" property="og:description" content="${t.ogDesc}"`);
+    }
+  }
+
+  // 3. Update OG URL & Locale
+  html = html.replace(/<meta property="og:locale" content="[^"]*"/i, `<meta property="og:locale" content="${locale}"`);
+  html = html.replace(/<meta property="og:url" content="[^"]*"/i, `<meta property="og:url" content="${baseUrl}/${lang}/"`);
+
+  // 4. Update Schema.org URL
+  html = html.replace(/"url":\s*"https:\/\/dalat-lashes-brows\.vercel\.app\/?"/g, `"url": "${baseUrl}/${lang}/"`);
+
+  // 5. Update canonical link (only canonical changes to /lang/, hreflangs stay consistent across all pages)
+  html = html.replace(/<link rel="canonical" href="[^"]*"/i, `<link rel="canonical" href="${baseUrl}/${lang}/"`);
+
+  // 6. Adjust relative asset paths for 1 level deeper subdirectory (/ru/ or /vi/)
+  html = html.replace(/href="style\.css"/g, 'href="../style.css"');
+  html = html.replace(/src="script\.js"/g, 'src="../script.js"');
+  html = html.replace(/src="hero_master\.jpg"/g, 'src="../hero_master.jpg"');
+  html = html.replace(/src="photos\//g, 'src="../photos/');
+  html = html.replace(/href="favicon/g, 'href="../favicon');
+  html = html.replace(/href="apple-touch-icon/g, 'href="../apple-touch-icon');
+
+  // 7. Pre-render translated text content in HTML
+  if (translations[lang]) {
+    html = replaceI18nContent(html, translations[lang]);
+  }
+
+  // 8. Update active state on language switcher buttons (desktop)
+  html = html.replace(
+    /(<div [^>]*?id="lang-switcher"[^>]*?>)([\s\S]*?)(<\/div>)/i,
+    (match, open, inner, close) => {
+      let updated = inner;
+      updated = updated.replace(/active-lang/g, '');
+      updated = updated.replace(/text-pink-800 hover:text-pink-950/g, '');
+      updated = updated.replace(/(class="lang-btn[^"]*)(")/gi, (m, c1, c2) => {
+        return `${c1.trim()} text-pink-800 hover:text-pink-950${c2}`;
+      });
+      const targetRegex = new RegExp(`(<button[^>]*?data-lang="${lang}"[^>]*?class="[^"]*)(")`, 'i');
+      updated = updated.replace(targetRegex, (m, c1, c2) => {
+        let clean = c1.replace('text-pink-800 hover:text-pink-950', '').trim();
+        return `${clean} active-lang${c2}`;
+      });
+      return `${open}${updated}${close}`;
+    }
+  );
+
+  // 9. Update active state on language switcher buttons (mobile)
+  html = html.replace(
+    /(<div class="flex items-center bg-pink-100\/90 p-0\.5 rounded-full[^>]*?>)([\s\S]*?)(<\/div>)/i,
+    (match, open, inner, close) => {
+      let updated = inner;
+      updated = updated.replace(/active-lang/g, '');
+      updated = updated.replace(/text-pink-900/g, '');
+      updated = updated.replace(/(class="lang-btn[^"]*)(")/gi, (m, c1, c2) => {
+        return `${c1.trim()} text-pink-900${c2}`;
+      });
+      const targetRegex = new RegExp(`(<button[^>]*?data-lang="${lang}"[^>]*?class="[^"]*)(")`, 'i');
+      updated = updated.replace(targetRegex, (m, c1, c2) => {
+        let clean = c1.replace('text-pink-900', '').trim();
+        return `${clean} active-lang${c2}`;
+      });
+      return `${open}${updated}${close}`;
+    }
+  );
+
+  return html;
 }
 
-// 2. Generate Russian page (ru/index.html)
+// 1. Generate ru/index.html
 const ruDir = path.join(rootDir, 'ru');
 if (!fs.existsSync(ruDir)) fs.mkdirSync(ruDir, { recursive: true });
-
-let ruHtml = rawHtml;
-// Replace lang attribute
-ruHtml = ruHtml.replace('<html lang="en"', '<html lang="ru"');
-
-// Replace Meta tags
-ruHtml = ruHtml.replace(/<title id="meta-title">[\s\S]*?<\/title>/, `<title id="meta-title">${translations.ru.metaTitle}</title>`);
-ruHtml = ruHtml.replace(/<meta id="meta-desc" name="description" content="[\s\S]*?">/, `<meta id="meta-desc" name="description" content="${translations.ru.metaDesc}">`);
-ruHtml = ruHtml.replace(/<meta id="meta-keywords" name="keywords" content="[\s\S]*?">/, `<meta id="meta-keywords" name="keywords" content="${translations.ru.metaKeywords}">`);
-ruHtml = ruHtml.replace(/<meta id="og-title" property="og:title" content="[\s\S]*?">/, `<meta id="og-title" property="og:title" content="${translations.ru.ogTitle}">`);
-ruHtml = ruHtml.replace(/<meta id="og-desc" property="og:description" content="[\s\S]*?">/, `<meta id="og-desc" property="og:description" content="${translations.ru.ogDesc}">`);
-ruHtml = ruHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta property="og:locale" content="ru_RU">`);
-
-// Replace hreflang and canonical for Russian
-const ruHreflangBlock = `
-  <!-- Search Engine Verifications -->
-  ${googleVerificationTag}
-  ${yandexVerificationTag}
-
-  <!-- Multilingual SEO & Canonical hreflang tags -->
-  <link rel="canonical" href="${baseUrl}/ru/">
-  <link rel="alternate" hreflang="en" href="${baseUrl}/">
-  <link rel="alternate" hreflang="ru" href="${baseUrl}/ru/">
-  <link rel="alternate" hreflang="vi" href="${baseUrl}/vi/">
-  <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
-`;
-if (ruHtml.includes('rel="alternate" hreflang="ru"')) {
-  ruHtml = ruHtml.replace(/<!-- Search Engine Verifications -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
-  ruHtml = ruHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
-  ruHtml = ruHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, ruHreflangBlock);
-} else {
-  ruHtml = ruHtml.replace('</head>', `${ruHreflangBlock}\n</head>`);
-}
-
-// Adjust relative asset paths for subdirectory
-ruHtml = ruHtml.replace(/href="style\.css"/g, 'href="../style.css"');
-ruHtml = ruHtml.replace(/src="script\.js"/g, 'src="../script.js"');
-ruHtml = ruHtml.replace(/src="hero_master\.jpg"/g, 'src="../hero_master.jpg"');
-ruHtml = ruHtml.replace(/content="hero_master\.jpg"/g, 'content="../hero_master.jpg"');
-ruHtml = ruHtml.replace(/src="photos\//g, 'src="../photos/');
-ruHtml = ruHtml.replace(/href="favicon/g, 'href="../favicon');
-ruHtml = ruHtml.replace(/href="apple-touch-icon/g, 'href="../apple-touch-icon');
-ruHtml = ruHtml.replace(/href="#/g, 'href="#'); // smooth anchor links still work on same page
-
-// Pre-render Russian text content
-ruHtml = replaceI18nContent(ruHtml, translations.ru);
-
-// Pre-render Russian language buttons active state
-ruHtml = ruHtml.replace(
-  /<button data-lang="en" class="lang-btn([^"]*?)active-lang([^"]*?)">EN<\/button>\s*<button data-lang="ru" class="lang-btn([^"]*?)">RU<\/button>/gi,
-  '<button data-lang="en" class="lang-btn$1$2">EN</button>\n            <button data-lang="ru" class="lang-btn px-2.5 py-1 rounded-full transition-all active-lang">RU</button>'
-);
-
+const ruHtml = generateLanguagePage('ru', 'ru_RU');
 fs.writeFileSync(path.join(ruDir, 'index.html'), ruHtml, 'utf8');
-console.log('Created ru/index.html with pre-rendered Russian SEO content');
+console.log('Successfully generated ru/index.html');
 
-// 3. Generate Vietnamese page (vi/index.html)
+// 2. Generate vi/index.html
 const viDir = path.join(rootDir, 'vi');
 if (!fs.existsSync(viDir)) fs.mkdirSync(viDir, { recursive: true });
-
-let viHtml = rawHtml;
-// Replace lang attribute
-viHtml = viHtml.replace('<html lang="en"', '<html lang="vi"');
-
-// Replace Meta tags
-viHtml = viHtml.replace(/<title id="meta-title">[\s\S]*?<\/title>/, `<title id="meta-title">${translations.vi.metaTitle}</title>`);
-viHtml = viHtml.replace(/<meta id="meta-desc" name="description" content="[\s\S]*?">/, `<meta id="meta-desc" name="description" content="${translations.vi.metaDesc}">`);
-viHtml = viHtml.replace(/<meta id="meta-keywords" name="keywords" content="[\s\S]*?">/, `<meta id="meta-keywords" name="keywords" content="${translations.vi.metaKeywords}">`);
-viHtml = viHtml.replace(/<meta id="og-title" property="og:title" content="[\s\S]*?">/, `<meta id="og-title" property="og:title" content="${translations.vi.ogTitle}">`);
-viHtml = viHtml.replace(/<meta id="og-desc" property="og:description" content="[\s\S]*?">/, `<meta id="og-desc" property="og:description" content="${translations.vi.ogDesc}">`);
-viHtml = viHtml.replace(/<meta property="og:locale" content="[\s\S]*?">/, `<meta property="og:locale" content="vi_VN">`);
-
-// Replace hreflang and canonical for Vietnamese
-const viHreflangBlock = `
-  <!-- Search Engine Verifications -->
-  ${googleVerificationTag}
-  ${yandexVerificationTag}
-
-  <!-- Multilingual SEO & Canonical hreflang tags -->
-  <link rel="canonical" href="${baseUrl}/vi/">
-  <link rel="alternate" hreflang="en" href="${baseUrl}/">
-  <link rel="alternate" hreflang="ru" href="${baseUrl}/ru/">
-  <link rel="alternate" hreflang="vi" href="${baseUrl}/vi/">
-  <link rel="alternate" hreflang="x-default" href="${baseUrl}/">
-`;
-if (viHtml.includes('rel="alternate" hreflang="ru"')) {
-  viHtml = viHtml.replace(/<!-- Search Engine Verifications -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
-  viHtml = viHtml.replace(/<!-- Google Site Verification for Search Console -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
-  viHtml = viHtml.replace(/<!-- Multilingual SEO & Canonical hreflang tags -->[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*?>/gi, viHreflangBlock);
-} else {
-  viHtml = viHtml.replace('</head>', `${viHreflangBlock}\n</head>`);
-}
-
-// Adjust relative asset paths for subdirectory
-viHtml = viHtml.replace(/href="style\.css"/g, 'href="../style.css"');
-viHtml = viHtml.replace(/src="script\.js"/g, 'src="../script.js"');
-viHtml = viHtml.replace(/src="hero_master\.jpg"/g, 'src="../hero_master.jpg"');
-viHtml = viHtml.replace(/content="hero_master\.jpg"/g, 'content="../hero_master.jpg"');
-viHtml = viHtml.replace(/src="photos\//g, 'src="../photos/');
-viHtml = viHtml.replace(/href="favicon/g, 'href="../favicon');
-viHtml = viHtml.replace(/href="apple-touch-icon/g, 'href="../apple-touch-icon');
-
-// Pre-render Vietnamese text content
-viHtml = replaceI18nContent(viHtml, translations.vi);
-
-// Pre-render Vietnamese language buttons active state
-viHtml = viHtml.replace(
-  /<button data-lang="en" class="lang-btn([^"]*?)active-lang([^"]*?)">EN<\/button>[\s\S]*?<button data-lang="vi" class="lang-btn([^"]*?)">VI<\/button>/gi,
-  '<button data-lang="en" class="lang-btn">EN</button>\n            <button data-lang="ru" class="lang-btn px-2.5 py-1 rounded-full transition-all text-pink-800">RU</button>\n            <button data-lang="vi" class="lang-btn px-2.5 py-1 rounded-full transition-all active-lang">VI</button>'
-);
-
+const viHtml = generateLanguagePage('vi', 'vi_VN');
 fs.writeFileSync(path.join(viDir, 'index.html'), viHtml, 'utf8');
-console.log('Created vi/index.html with pre-rendered Vietnamese SEO content');
+console.log('Successfully generated vi/index.html');
 
-// 4. Create robots.txt
+// 3. Update robots.txt
 const robotsTxt = `User-agent: *
 Allow: /
 
@@ -180,9 +142,9 @@ Allow: /
 Sitemap: ${baseUrl}/sitemap.xml
 `;
 fs.writeFileSync(path.join(rootDir, 'robots.txt'), robotsTxt, 'utf8');
-console.log('Created robots.txt');
+console.log('Updated robots.txt');
 
-// 5. Create sitemap.xml
+// 4. Update sitemap.xml
 const today = new Date().toISOString().split('T')[0];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -220,5 +182,5 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>
 `;
 fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapXml, 'utf8');
-console.log('Created sitemap.xml');
-console.log('SEO build completed successfully!');
+console.log('Updated sitemap.xml');
+console.log('Build completed successfully!');
