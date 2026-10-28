@@ -16,13 +16,41 @@ const translations = {
     ogDesc: "Professional Lash & Brow Master Yuliya in Da Lat (73 Đông Tĩnh). English & Russian speaking master. Natural look & premium quality.",
 
     // Top Bar & Navigation
-    topBarText: "🌸 Da Lat Beauty Studio • 73 Đông Tĩnh • Appointments open for this week!",
+    topBarText: "🌸 Da Lat Studio (73 Đông Tĩnh) • Also taking appointments in Saigon (Thảo Điền) on visiting dates!",
+    topBarSaigonLink: "View Saigon Studio →",
+    topBarDaLatLink: "View Da Lat Studio →",
+    citySelectDaLat: "📍 Da Lat (73 Đông Tĩnh)",
+    citySelectSaigon: "📍 Saigon (Thảo Điền)",
     navServices: "Services & Price List",
     navPortfolio: "Real Results",
     navWhyUs: "Why Us",
     navLocation: "Location & Map",
     navContacts: "Contacts",
     ctaBookNow: "Book Now",
+
+    // Saigon Specific Translations
+    saigonMetaTitle: "Lash & Brow Studio Ho Chi Minh City (Saigon) | @browsaigon - Thảo Điền",
+    saigonMetaDesc: "Professional lash extensions, lash lift & brow styling in Ho Chi Minh City (near Thảo Điền, District 2). Visiting artist Yuliya. English & Russian speaking master. Book your slot!",
+    saigonMetaKeywords: "lash extensions saigon, eyelash extensions ho chi minh city, lash lift thao dien, brow lamination district 2 hcmc, nối mi thảo điền, @browsaigon",
+    saigonOgTitle: "Brow & Lash Studio Ho Chi Minh City (Thảo Điền) | @browsaigon",
+    saigonOgDesc: "Professional Lash & Brow Master Yuliya in Saigon (near Thảo Điền, D2). English & Russian speaking master. Natural elegance & premium quality.",
+    saigonTopBarText: "✨ Ho Chi Minh City Studio • Near Thảo Điền (District 2) • Visiting Artist Sessions",
+    saigonHeroBadge: "Ho Chi Minh City • Near Thảo Điền (District 2) • Visiting Artist",
+    saigonHeroTitle: "Professional Lash & Brow Artist in Saigon (Thảo Điền)",
+    saigonHeroSubtitle: "Natural elegance tailored to your unique beauty. Studio near Thảo Điền (District 2). Visiting master from Da Lat with scheduled sessions each month. Zero language barrier (English & Russian).",
+    saigonVisitingNoticeTitle: "Visiting Sessions in Ho Chi Minh City:",
+    saigonVisitingNoticeDesc: "Master Yuliya conducts exclusive visiting beauty sessions in Ho Chi Minh City on selected dates each month at a cozy studio near Thảo Điền (District 2). Slots are limited per trip — please message in Telegram or Instagram to check current dates and reserve your appointment!",
+    saigonBadgeFeature1: "English & Russian",
+    saigonBadgeFeature2: "100% Sterile Tools",
+    saigonBadgeFeature3: "Near Thảo Điền, D2",
+    saigonHeroSubText: "Near Thảo Điền, District 2 (Thủ Đức City), HCMC",
+    saigonLocTitle: "Studio Location in Ho Chi Minh City",
+    saigonLocSubtitle: "Near Thảo Điền, District 2 (Thủ Đức City)",
+    saigonLocDesc: "Comfortable private studio space located near Thảo Điền (District 2). Convenient access, parking, and tranquil atmosphere. Exact address and location pin are sent upon booking confirmation.",
+    saigonLocAddressLabel: "Area:",
+    saigonLocAddressValue: "Near Thảo Điền, District 2 (Thủ Đức City), Ho Chi Minh City",
+    saigonSwitchToDalat: "Looking for our permanent studio in Da Lat? Visit 73 Đông Tĩnh, Da Lat →",
+    saigonFooterSeoTitle: "Local SEO & Popular Searches in Ho Chi Minh City (Saigon):",
 
     // Hero Section
     heroBadge: "Da Lat • 73 Đông Tĩnh • English & Russian Speaking",
@@ -132,8 +160,8 @@ const translations = {
 
     // Modal
     modalTitle: "Select Booking Channel",
-    modalDesc: "Pick your preferred channel to chat directly with master Yuliya in Da Lat:",
-    modalNote: "Free consultation & custom style advice before any appointment.",
+    modalDesc: "Pick your preferred channel to chat directly with master Yuliya (Da Lat & Saigon):",
+    modalNote: "Free consultation & style advice. Please specify whether you are booking for Da Lat (73 Đông Tĩnh) or Saigon (Thảo Điền)!",
     mobileFloatingBtn: "Book Lash / Brow",
     mobileFloatingSub: "Telegram / Instagram",
     footerSeoTitle: "Local SEO & Popular Searches in Da Lat:"
@@ -148,13 +176,41 @@ const translations = {
     ogDesc: "Профессиональный мастер по ресницам и бровям Юля в Далате (73 Đông Tĩnh). Премиум-материалы, стерильность, индивидуальный подход.",
 
     // Top Bar & Navigation
-    topBarText: "🌸 Студия красоты в Далате • 73 Đông Tĩnh • Открыта запись на эту неделю!",
+    topBarText: "🌸 Студия в Далате (73 Đông Tĩnh) • Также приём в Сайгоне (Тао Диен) по датам!",
+    topBarSaigonLink: "Студия в Сайгоне →",
+    topBarDaLatLink: "Студия в Далате →",
+    citySelectDaLat: "📍 Далат (73 Đông Tĩnh)",
+    citySelectSaigon: "📍 Сайгон (Тао Диен)",
     navServices: "Услуги и прайс-лист",
     navPortfolio: "Примеры работ",
     navWhyUs: "Преимущества",
     navLocation: "Локация и карта",
     navContacts: "Контакты",
     ctaBookNow: "Записаться",
+
+    // Saigon Specific Translations
+    saigonMetaTitle: "Студия ресниц и бровей в Хошимине (Сайгон) | @browsaigon - Тао Диен",
+    saigonMetaDesc: "Профессиональное наращивание ресниц, ламинирование и брови в Хошимине (район Тао Диен, Район 2). Мастер Юля. Запись на выездные сессии через Telegram или Instagram!",
+    saigonMetaKeywords: "наращивание ресниц хошимин, ламинирование ресниц сайгон, брови тао диен, ресницы район 2 хошимин, мастер по ресницам сайгон, @browsaigon",
+    saigonOgTitle: "Студия ресниц и бровей в Хошимине (Тао Диен) | @browsaigon",
+    saigonOgDesc: "Профессиональный мастер по ресницам и бровям Юля в Хошимине (вблизи Тао Диен, Район 2). Премиум-материалы, стерильность, сервис на русском и английском.",
+    saigonTopBarText: "✨ Студия в Хошимине • Вблизи Тао Диен (Район 2) • Выездные даты мастера",
+    saigonHeroBadge: "Хошимин • Вблизи Тао Диен (Район 2) • Выездные сессии",
+    saigonHeroTitle: "Профессиональный мастер по ресницам и бровям в Хошимине",
+    saigonHeroSubtitle: "Естественная эстетика под ваши черты лица. Студия вблизи Тао Диен (Район 2). Выездные даты мастера из Далата каждый месяц. Премиум-материалы и сервис без языкового барьера.",
+    saigonVisitingNoticeTitle: "Формат работы и выездные даты в Сайгоне:",
+    saigonVisitingNoticeDesc: "Мастер Юля регулярно приезжает в Хошимин на определённые даты и принимает в уютной студии в районе Тао Диен (District 2). Количество мест ограничено — напишите в Telegram или Instagram, чтобы узнать ближайшие даты визита и забронировать удобное время!",
+    saigonBadgeFeature1: "Русский и английский",
+    saigonBadgeFeature2: "100% стерильные приборы",
+    saigonBadgeFeature3: "Вблизи Тао Диен, D2",
+    saigonHeroSubText: "Вблизи Тао Диен, Район 2 (город Тхудык), Хошимин",
+    saigonLocTitle: "Локация студии в Хошимине",
+    saigonLocSubtitle: "Район Тао Диен, Район 2 (Thủ Đức City)",
+    saigonLocDesc: "Уютная студия с анатомической кушеткой рядом с Тао Диен (District 2). Удобный подъезд и комфортная атмосфера. Точный адрес и геолокация отправляются при подтверждении записи.",
+    saigonLocAddressLabel: "Локация:",
+    saigonLocAddressValue: "Вблизи Тао Диен, Район 2 (город Тхудык), Хошимин",
+    saigonSwitchToDalat: "Ищете постоянную студию в Далате? Перейти к адресу 73 Đông Tĩnh, Далат →",
+    saigonFooterSeoTitle: "Local SEO и популярные запросы в Хошимине (Сайгон):",
 
     // Hero Section
     heroBadge: "Далат • 73 Đông Tĩnh • Русско- и англоязычный мастер",
@@ -264,8 +320,8 @@ const translations = {
 
     // Modal
     modalTitle: "Выберите канал для связи",
-    modalDesc: "Нажмите на удобный мессенджер для диалога с мастером Юлией в Далате:",
-    modalNote: "Бесплатная консультация и подбор эффекта перед любой процедурой.",
+    modalDesc: "Нажмите на удобный мессенджер для диалога с мастером Юлией (Далат и Сайгон):",
+    modalNote: "Бесплатная консультация и подбор эффекта. Пожалуйста, укажите город (Далат или Сайгон) в сообщении!",
     mobileFloatingBtn: "Записаться на ресницы / брови",
     mobileFloatingSub: "Telegram / Instagram",
     footerSeoTitle: "Local SEO и популярные запросы в Далате:"
@@ -280,13 +336,41 @@ const translations = {
     ogDesc: "Nối Mi & Làm Chân Mày Chuyên Nghiệp Tại Đà Lạt (73 Đông Tĩnh). Chất lượng chuẩn quốc tế, an toàn tuyệt đối.",
 
     // Top Bar & Navigation
-    topBarText: "🌸 Studio Làm Đẹp Đà Lạt • 73 Đông Tĩnh • Đang mở lịch hẹn cho tuần này!",
+    topBarText: "🌸 Studio tại Đà Lạt (73 Đông Tĩnh) • Có nhận lịch tại Sài Gòn (Thảo Điền) theo đợt!",
+    topBarSaigonLink: "Xem Studio Sài Gòn →",
+    topBarDaLatLink: "Xem Studio Đà Lạt →",
+    citySelectDaLat: "📍 Đà Lạt (73 Đông Tĩnh)",
+    citySelectSaigon: "📍 Sài Gòn (Thảo Điền)",
     navServices: "Dịch vụ & Bảng giá",
     navPortfolio: "Hình ảnh thực tế",
     navWhyUs: "Ưu điểm",
     navLocation: "Vị trí & Bản đồ",
     navContacts: "Liên hệ",
     ctaBookNow: "Đặt Lịch",
+
+    // Saigon Specific Translations
+    saigonMetaTitle: "Nối Mi & Làm Chân Mày Tại TP. Hồ Chí Minh (Sài Gòn) | @browsaigon - Thảo Điền",
+    saigonMetaDesc: "Dịch vụ nối mi đẹp, uốn mi & làm chân mày uy tín tại TP. Hồ Chí Minh (gần Thảo Điền, Quận 2). Master Yuliya nhận lịch theo đợt. Đặt lịch qua Telegram hoặc Instagram!",
+    saigonMetaKeywords: "nối mi sài gòn, uốn mi thảo điền, làm chân mày quận 2, nối mi hồ chí minh, tiệm nối mi thảo điền, @browsaigon",
+    saigonOgTitle: "Brow & Lash Studio TP. Hồ Chí Minh (Thảo Điền) | @browsaigon",
+    saigonOgDesc: "Nối Mi & Làm Chân Mày Chuyên Nghiệp Tại TP.HCM (gần Thảo Điền, Quận 2). Chuẩn quốc tế, an toàn tuyệt đối, giao tiếp tiếng Anh và tiếng Nga.",
+    saigonTopBarText: "✨ Studio tại TP. Hồ Chí Minh • Gần Thảo Điền (Quận 2) • Lịch nhận theo đợt",
+    saigonHeroBadge: "TP. Hồ Chí Minh • Gần Thảo Điền (Quận 2) • Lịch theo đợt",
+    saigonHeroTitle: "Nối Mi & Định Hình Chân Mày Chuyên Nghiệp Tại Sài Gòn",
+    saigonHeroSubtitle: "Vẻ đẹp tự nhiên tôn vinh đường nét khuôn mặt bạn. Studio gần Thảo Điền (Quận 2). Master Yuliya nhận lịch định kỳ hàng tháng từ Đà Lạt. Tiêu chuẩn quốc tế, không rào cản ngôn ngữ.",
+    saigonVisitingNoticeTitle: "Lịch làm việc và đặt hẹn tại Sài Gòn:",
+    saigonVisitingNoticeDesc: "Master Yuliya có lịch công tác định kỳ tại TP. Hồ Chí Minh theo các đợt trong tháng tại studio gần khu Thảo Điền (Quận 2). Số lượng chỗ có hạn — vui lòng nhắn tin qua Telegram hoặc Instagram để cập nhật ngày làm việc sắp tới và giữ lịch hẹn sớm nhất!",
+    saigonBadgeFeature1: "Tiếng Anh & Tiếng Nga",
+    saigonBadgeFeature2: "Khử trùng 100% chuẩn y tế",
+    saigonBadgeFeature3: "Gần Thảo Điền, Quận 2",
+    saigonHeroSubText: "Gần Thảo Điền, Quận 2 (TP. Thủ Đức), TP.HCM",
+    saigonLocTitle: "Vị trí Studio tại TP. Hồ Chí Minh",
+    saigonLocSubtitle: "Khu vực gần Thảo Điền, Quận 2 (TP. Thủ Đức)",
+    saigonLocDesc: "Không gian studio yên tĩnh, hiện đại với giường đệm êm ái tại khu vực Thảo Điền (Quận 2). Địa chỉ chi tiết và định vị GPS sẽ được gửi khi xác nhận lịch hẹn.",
+    saigonLocAddressLabel: "Khu vực:",
+    saigonLocAddressValue: "Gần Thảo Điền, Quận 2 (TP. Thủ Đức), TP. Hồ Chí Minh",
+    saigonSwitchToDalat: "Bạn muốn đặt lịch tại studio chính ở Đà Lạt? Xem địa chỉ 73 Đông Tĩnh, Đà Lạt →",
+    saigonFooterSeoTitle: "Từ khóa Local SEO tại TP. Hồ Chí Minh (Sài Gòn):",
 
     // Hero Section
     heroBadge: "Đà Lạt • 73 Đông Tĩnh • Giao tiếp Tiếng Anh & Tiếng Nga",
@@ -396,8 +480,8 @@ const translations = {
 
     // Modal
     modalTitle: "Chọn kênh liên hệ",
-    modalDesc: "Chọn Telegram hoặc Instagram Direct để trao đổi trực tiếp cùng Master Yuliya tại Đà Lạt:",
-    modalNote: "Tư vấn dáng mi và lông mày miễn phí trước khi thực hiện.",
+    modalDesc: "Chọn Telegram hoặc Instagram Direct để trao đổi trực tiếp cùng Master Yuliya (Đà Lạt & Sài Gòn):",
+    modalNote: "Tư vấn miễn phí. Vui lòng cho biết bạn muốn đặt lịch tại Đà Lạt (73 Đông Tĩnh) hay Sài Gòn (Thảo Điền) khi nhắn tin!",
     mobileFloatingBtn: "Đặt lịch làm Mi / Mày",
     mobileFloatingSub: "Telegram / Instagram",
     footerSeoTitle: "Từ khóa Local SEO tại Đà Lạt:"
@@ -510,19 +594,26 @@ function setLanguage(lang) {
     }
   });
 
-  // Dynamic SEO Meta tags update
-  if (data.metaTitle) document.title = data.metaTitle;
+  // Dynamic SEO Meta tags update (supports both Da Lat and Saigon landing pages)
+  const isSaigon = typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('/saigon');
+  const titleVal = (isSaigon && data.saigonMetaTitle) ? data.saigonMetaTitle : data.metaTitle;
+  const descVal = (isSaigon && data.saigonMetaDesc) ? data.saigonMetaDesc : data.metaDesc;
+  const kwVal = (isSaigon && data.saigonMetaKeywords) ? data.saigonMetaKeywords : data.metaKeywords;
+  const ogTitleVal = (isSaigon && data.saigonOgTitle) ? data.saigonOgTitle : data.ogTitle;
+  const ogDescVal = (isSaigon && data.saigonOgDesc) ? data.saigonOgDesc : data.ogDesc;
+
+  if (titleVal) document.title = titleVal;
   const metaDesc = document.getElementById('meta-desc');
-  if (metaDesc && data.metaDesc) metaDesc.setAttribute('content', data.metaDesc);
+  if (metaDesc && descVal) metaDesc.setAttribute('content', descVal);
 
   const metaKeywords = document.getElementById('meta-keywords');
-  if (metaKeywords && data.metaKeywords) metaKeywords.setAttribute('content', data.metaKeywords);
+  if (metaKeywords && kwVal) metaKeywords.setAttribute('content', kwVal);
 
   const ogTitle = document.getElementById('og-title');
-  if (ogTitle && data.ogTitle) ogTitle.setAttribute('content', data.ogTitle);
+  if (ogTitle && ogTitleVal) ogTitle.setAttribute('content', ogTitleVal);
 
   const ogDesc = document.getElementById('og-desc');
-  if (ogDesc && data.ogDesc) ogDesc.setAttribute('content', data.ogDesc);
+  if (ogDesc && ogDescVal) ogDesc.setAttribute('content', ogDescVal);
 
   // Update Language switchers active styling
   document.querySelectorAll('.lang-btn').forEach((btn) => {

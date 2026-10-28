@@ -95,6 +95,16 @@
     "url": "https://dalat-lashes-brows.vercel.app/vi/",
     "priceRange": "₫₫",
     "knowsLanguage": ["English", "Russian", "Vietnamese"],
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Da Lat"
+      },
+      {
+        "@type": "City",
+        "name": "Ho Chi Minh City"
+      }
+    ],
     "sameAs": [
       "https://www.instagram.com/browsaigon?exln=ZzJrdm",
       "https://t.me/Yuliya_zateyka"
@@ -120,9 +130,10 @@
 <body class="bg-[#FFF5F7] text-stone-800 font-sans antialiased selection:bg-rose-200 selection:text-rose-900">
 
   <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-r from-rose-900 via-rose-950 to-pink-950 text-rose-100 text-xs py-2.5 px-4 tracking-wider uppercase text-center flex items-center justify-center gap-2 border-b border-rose-800/40">
+  <div class="bg-gradient-to-r from-rose-900 via-rose-950 to-pink-950 text-rose-100 text-xs py-2 px-4 tracking-wider uppercase text-center flex flex-wrap items-center justify-center gap-2 border-b border-rose-800/40">
     <span class="inline-block w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
-    <span data-i18n="topBarText">🌸 Studio Làm Đẹp Đà Lạt • 73 Đông Tĩnh • Đang mở lịch hẹn cho tuần này!</span>
+    <span data-i18n="topBarText">🌸 Studio tại Đà Lạt (73 Đông Tĩnh) • Có nhận lịch tại Sài Gòn (Thảo Điền) theo đợt!</span>
+    <a href="/saigon/" class="underline text-rose-200 hover:text-white transition-colors ml-1 font-semibold normal-case text-xs" data-i18n="topBarSaigonLink">Xem Studio Sài Gòn →</a>
   </div>
 
   <!-- Header / Navigation -->
@@ -141,7 +152,7 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-pink-950/80">
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-sm text-pink-950/80">
           <a href="#services" class="hover:text-rose-600 transition-colors" data-i18n="navServices">Dịch vụ & Bảng giá</a>
           <a href="#portfolio" class="hover:text-rose-600 transition-colors" data-i18n="navPortfolio">Hình ảnh thực tế</a>
           <a href="#benefits" class="hover:text-rose-600 transition-colors" data-i18n="navWhyUs">Ưu điểm</a>
@@ -149,8 +160,14 @@
           <a href="#contacts" class="hover:text-rose-600 transition-colors" data-i18n="navContacts">Liên hệ</a>
         </nav>
 
-        <!-- Right Side: Language Switcher & CTA -->
-        <div class="hidden sm:flex items-center gap-4">
+        <!-- Right Side: City Selector, Language Switcher & CTA -->
+        <div class="hidden sm:flex items-center gap-3">
+          <!-- City Selector Pill -->
+          <div class="flex items-center bg-pink-100/80 p-0.5 rounded-full text-xs font-semibold shadow-inner border border-pink-200/70" id="city-switcher">
+            <a href="/" class="px-2.5 py-1 rounded-full transition-all bg-white text-rose-600 shadow-sm" data-i18n="citySelectDaLat">📍 Đà Lạt (73 Đông Tĩnh)</a>
+            <a href="/saigon/" class="px-2.5 py-1 rounded-full transition-all text-pink-800 hover:text-pink-950" data-i18n="citySelectSaigon">📍 Sài Gòn (Thảo Điền)</a>
+          </div>
+
           <!-- Language Selector Pill -->
           <div class="flex items-center bg-pink-100/80 p-1 rounded-full text-xs font-semibold shadow-inner border border-pink-200/70" id="lang-switcher">
             <button type="button" data-lang="en" class="lang-btn px-3 py-1.5 rounded-full transition-all duration-200 text-pink-800 hover:text-pink-950">EN</button>
@@ -159,7 +176,7 @@
           </div>
 
           <!-- Main CTA Button -->
-          <button onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white px-5 py-2.5 rounded-full font-medium text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+          <button onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white px-4 sm:px-5 py-2.5 rounded-full font-medium text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
             <i data-lucide="calendar" class="w-4 h-4"></i>
             <span data-i18n="ctaBookNow">Đặt Lịch</span>
           </button>
@@ -167,10 +184,14 @@
 
         <!-- Mobile Menu & Lang button -->
         <div class="flex items-center gap-2 md:hidden">
+          <div class="flex items-center bg-pink-100/90 p-0.5 rounded-full text-[11px] font-semibold border border-pink-200">
+            <a href="/" class="px-2 py-0.5 rounded-full bg-white text-rose-600 shadow-xs" data-i18n="citySelectDaLat">📍 Đà Lạt (73 Đông Tĩnh)</a>
+            <a href="/saigon/" class="px-2 py-0.5 rounded-full " data-i18n="citySelectSaigon">📍 Sài Gòn (Thảo Điền)</a>
+          </div>
           <div class="flex items-center bg-pink-100/90 p-0.5 rounded-full text-xs font-semibold border border-pink-200">
-            <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded-full  text-[11px] text-pink-900">EN</button>
+            <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded-full active-lang text-[11px]">EN</button>
             <button type="button" data-lang="ru" class="lang-btn px-2 py-1 rounded-full text-[11px] text-pink-900">RU</button>
-            <button type="button" data-lang="vi" class="lang-btn px-2 py-1 rounded-full text-[11px] active-lang">VI</button>
+            <button type="button" data-lang="vi" class="lang-btn px-2 py-1 rounded-full text-[11px] text-pink-900">VI</button>
           </div>
 
           <button id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" class="p-2 text-pink-950 hover:text-rose-600 focus:outline-none">
@@ -183,6 +204,13 @@
 
     <!-- Mobile Drawer Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#FFF5F7] border-b border-pink-200 px-6 py-5 space-y-4 shadow-xl animate-fadeIn">
+      <div class="flex items-center gap-2 pb-3 mb-2 border-b border-pink-200">
+        <span class="text-xs text-pink-900/60 uppercase tracking-wider font-semibold">City:</span>
+        <div class="flex items-center bg-pink-100/90 p-0.5 rounded-full text-xs font-semibold border border-pink-200">
+          <a href="/" class="px-3 py-1 rounded-full bg-white text-rose-600 shadow-sm" data-i18n="citySelectDaLat">📍 Đà Lạt (73 Đông Tĩnh)</a>
+          <a href="/saigon/" class="px-3 py-1 rounded-full text-pink-900" data-i18n="citySelectSaigon">📍 Sài Gòn (Thảo Điền)</a>
+        </div>
+      </div>
       <div class="flex flex-col space-y-3 font-medium text-pink-950">
         <a href="#services" class="mobile-nav-link hover:text-rose-600 py-1" data-i18n="navServices">Dịch vụ & Bảng giá</a>
         <a href="#portfolio" class="mobile-nav-link hover:text-rose-600 py-1" data-i18n="navPortfolio">Hình ảnh thực tế</a>
@@ -883,6 +911,22 @@
               </a>
             </div>
           </div>
+
+          <!-- Saigon Visiting Studio Callout Banner -->
+          <div class="p-5 rounded-3xl bg-gradient-to-r from-rose-100/90 via-pink-100/80 to-rose-50/90 border border-rose-300/70 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider font-bold text-rose-700">Ho Chi Minh City / Saigon</p>
+                <p class="text-xs text-pink-950 font-medium mt-0.5">Studio near Thảo Điền (District 2). Monthly visiting dates.</p>
+              </div>
+            </div>
+            <a href="/saigon/" class="shrink-0 px-4 py-2 rounded-full bg-white hover:bg-rose-50 text-rose-600 font-bold text-xs border border-rose-200 shadow-xs transition-all">
+              Saigon Studio →
+            </a>
+          </div>
         </div>
 
         <!-- Visual Google Maps Iframe -->
@@ -1037,7 +1081,7 @@
           <i data-lucide="calendar-check" class="w-6 h-6"></i>
         </div>
         <h3 class="font-serif text-2xl font-bold" data-i18n="modalTitle">Chọn kênh liên hệ</h3>
-        <p class="text-xs text-pink-900/70 mt-1" id="modal-service-subtitle" data-i18n="modalDesc">Chọn Telegram hoặc Instagram Direct để trao đổi trực tiếp cùng Master Yuliya tại Đà Lạt:</p>
+        <p class="text-xs text-pink-900/70 mt-1" id="modal-service-subtitle" data-i18n="modalDesc">Chọn Telegram hoặc Instagram Direct để trao đổi trực tiếp cùng Master Yuliya (Đà Lạt & Sài Gòn):</p>
       </div>
 
       <!-- Messenger Buttons in Modal -->
@@ -1071,7 +1115,7 @@
         </a>
       </div>
 
-      <p class="text-center text-[11px] text-pink-900/60 mt-5" data-i18n="modalNote">Tư vấn dáng mi và lông mày miễn phí trước khi thực hiện.</p>
+      <p class="text-center text-[11px] text-pink-900/60 mt-5" data-i18n="modalNote">Tư vấn miễn phí. Vui lòng cho biết bạn muốn đặt lịch tại Đà Lạt (73 Đông Tĩnh) hay Sài Gòn (Thảo Điền) khi nhắn tin!</p>
     </div>
   </div>
 

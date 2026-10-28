@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Da Lat Studio -->
   <url>
     <loc>https://dalat-lashes-brows.vercel.app/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/"/>
@@ -13,7 +14,7 @@
   </url>
   <url>
     <loc>https://dalat-lashes-brows.vercel.app/ru/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/"/>
@@ -23,12 +24,44 @@
   </url>
   <url>
     <loc>https://dalat-lashes-brows.vercel.app/vi/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://dalat-lashes-brows.vercel.app/ru/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://dalat-lashes-brows.vercel.app/vi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalat-lashes-brows.vercel.app/"/>
+  </url>
+
+  <!-- Ho Chi Minh City (Saigon - Thảo Điền) Studio -->
+  <url>
+    <loc>https://dalat-lashes-brows.vercel.app/saigon/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://dalat-lashes-brows.vercel.app/saigon/ru/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://dalat-lashes-brows.vercel.app/saigon/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
+  </url>
+  <url>
+    <loc>https://dalat-lashes-brows.vercel.app/saigon/ru/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://dalat-lashes-brows.vercel.app/saigon/ru/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://dalat-lashes-brows.vercel.app/saigon/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
+  </url>
+  <url>
+    <loc>https://dalat-lashes-brows.vercel.app/saigon/vi/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://dalat-lashes-brows.vercel.app/saigon/ru/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://dalat-lashes-brows.vercel.app/saigon/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalat-lashes-brows.vercel.app/saigon/"/>
   </url>
 </urlset>
